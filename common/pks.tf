@@ -3,19 +3,19 @@ locals {
 }
 
 data "template_file" "pks_configuration" {
-  template = "${chomp(file("${path.module}/templates/pks-config.yml"))}"
+  template = chomp(file("${path.module}/templates/pks-config.yml"))
 
   vars = {
     az_configuration = var.az_configuration
     az               = var.singleton_az
     plan_azs         = join(", ", var.availability_zones)
 
-    tls_cert        = "${jsonencode(local.tls_full_chain)}"
-    tls_private_key = "${jsonencode(var.tls_private_key)}"
-    tls_ca_cert     = "${jsonencode(var.tls_ca_cert)}"
+    tls_cert        = jsonencode(local.tls_full_chain)
+    tls_private_key = jsonencode(var.tls_private_key)
+    tls_ca_cert     = jsonencode(var.tls_ca_cert)
 
-    api_elb_names     = "${join(", ", var.api_elb_names)}"
-    api_domain       = "${var.api_domain}"
+    api_elb_names = join(", ", var.api_elb_names)
+    api_domain    = var.api_domain
   }
 }
 

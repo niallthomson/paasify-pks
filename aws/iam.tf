@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "pks_master_policy" {
 
 resource "aws_iam_policy" "pks_master" {
   name   = "${var.env_name}_pks-master-policy"
-  policy = "${data.aws_iam_policy_document.pks_master_policy.json}"
+  policy = data.aws_iam_policy_document.pks_master_policy.json
 }
 
 resource "aws_iam_role" "pks_master" {
@@ -79,17 +79,17 @@ resource "aws_iam_role" "pks_master" {
     create_before_destroy = true
   }
 
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "pks_master" {
-  role       = "${aws_iam_role.pks_master.name}"
-  policy_arn = "${aws_iam_policy.pks_master.arn}"
+  role       = aws_iam_role.pks_master.name
+  policy_arn = aws_iam_policy.pks_master.arn
 }
 
 resource "aws_iam_instance_profile" "pks_master" {
   name = "${var.env_name}_pks-master"
-  role = "${aws_iam_role.pks_master.name}"
+  role = aws_iam_role.pks_master.name
 
   lifecycle {
     ignore_changes = [name]
@@ -122,7 +122,7 @@ data "aws_iam_policy_document" "pks_work_policy" {
 
 resource "aws_iam_policy" "pks_worker" {
   name   = "${var.env_name}_pks-worker-policy"
-  policy = "${data.aws_iam_policy_document.pks_work_policy.json}"
+  policy = data.aws_iam_policy_document.pks_work_policy.json
 }
 
 data "aws_iam_policy_document" "assume_role_policy" {
@@ -143,17 +143,17 @@ resource "aws_iam_role" "pks_worker" {
     create_before_destroy = true
   }
 
-  assume_role_policy = "${data.aws_iam_policy_document.assume_role_policy.json}"
+  assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "pks_worker" {
-  role       = "${aws_iam_role.pks_worker.name}"
-  policy_arn = "${aws_iam_policy.pks_worker.arn}"
+  role       = aws_iam_role.pks_worker.name
+  policy_arn = aws_iam_policy.pks_worker.arn
 }
 
 resource "aws_iam_instance_profile" "pks_worker" {
   name = "${var.env_name}_pks-worker"
-  role = "${aws_iam_role.pks_worker.name}"
+  role = aws_iam_role.pks_worker.name
 
   lifecycle {
     ignore_changes = [name]

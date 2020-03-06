@@ -43,7 +43,7 @@ resource "aws_lb_listener" "pks_api_9021" {
 
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.pks_api_9021.arn}"
+    target_group_arn = aws_lb_target_group.pks_api_9021.arn
   }
 }
 

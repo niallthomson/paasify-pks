@@ -34,8 +34,16 @@ variable "api_domain" {
 
 }
 
+variable "harbor_domain" {
+
+}
+
 variable "api_elb_names" {
   type = list
+}
+
+variable "harbor_elb_names" {
+  type = list(string)
 }
 
 variable "pks_ops_file" {

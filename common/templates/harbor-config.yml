@@ -1,0 +1,22 @@
+product-name: harbor-container-registry
+product-properties:
+  .properties.hostname:
+    value: ${harbor_domain}
+  .properties.server_cert_key:
+    value:
+      cert_pem: ${tls_cert}
+      private_key_pem: ${tls_private_key}
+  .properties.admin_password:
+    value:
+      secret: ${admin_password}
+network-properties:
+  network:
+    name: pks
+  service_network:
+    name: services
+  other_availability_zones: ${az_configuration}
+  singleton_availability_zone:
+    name: ${az}
+resource-config:
+  harbor-app:
+    elb_names: [${harbor_elb_names}]

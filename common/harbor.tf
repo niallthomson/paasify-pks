@@ -1,9 +1,21 @@
+resource "random_string" "harbor_password" {
+  length  = 8
+  special = false
+}
+
 data "template_file" "harbor_configuration" {
   template = "${chomp(file("${path.module}/templates/harbor-config.yml"))}"
 
   vars = {
     az_configuration = var.az_configuration
     az               = var.singleton_az
+
+    harbor_elb_names = join(", ", var.harbor_elb_names)
+    harbor_domain    = var.harbor_domain
+    tls_cert         = jsonencode(local.tls_full_chain)
+    tls_private_key  = jsonencode(var.tls_private_key)
+    tls_ca_cert      = jsonencode(var.tls_ca_cert)
+    admin_password   = random_string.harbor_password.result
   }
 }
 
@@ -22,5 +34,5 @@ module "harbor" {
 
   skip = contains(var.tiles, "harbor") ? false : true
 
-  blocker = module.pas.blocker
+  blocker = module.pks.blocker
 }

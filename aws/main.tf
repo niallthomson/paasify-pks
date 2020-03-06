@@ -41,13 +41,15 @@ module "common" {
 
   pks_version        = var.pks_version
   tiles              = var.tiles
-  iaas               = "aws"
+  iaas               = "light*aws"
   availability_zones = module.pave.availability_zones
   auto_apply         = var.auto_apply
 
-  api_domain = aws_route53_record.pks_api_dns.name
+  api_domain    = aws_route53_record.pks_api_dns.name
+  harbor_domain = aws_route53_record.harbor_dns.name
 
-  api_elb_names = formatlist("alb:%s", concat(aws_lb_target_group.pks_api_9021.*.name, aws_lb_target_group.pks_api_8443.*.name))
+  api_elb_names    = formatlist("alb:%s", concat(aws_lb_target_group.pks_api_9021.*.name, aws_lb_target_group.pks_api_8443.*.name))
+  harbor_elb_names = formatlist("alb:%s", concat(aws_lb_target_group.harbor_443.*.name, aws_lb_target_group.harbor_80.*.name))
 
   pks_ops_file    = data.template_file.pks_ops_file.rendered
   harbor_ops_file = data.template_file.harbor_ops_file.rendered

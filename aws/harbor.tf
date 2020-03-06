@@ -42,7 +42,7 @@ resource "aws_lb_listener" "harbor_443" {
 
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.harbor_443.arn}"
+    target_group_arn = aws_lb_target_group.harbor_443.arn
   }
 }
 
@@ -67,7 +67,7 @@ resource "aws_lb_listener" "harbor_80" {
 
   default_action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.harbor_80.arn}"
+    target_group_arn = aws_lb_target_group.harbor_80.arn
   }
 }
 
@@ -98,7 +98,7 @@ resource "aws_route53_record" "harbor_dns" {
 }
 
 data "template_file" "harbor_ops_file" {
-  template = "${chomp(file("${path.module}/templates/harbor-config-ops.yml"))}"
+  template = chomp(file("${path.module}/templates/harbor-config-ops.yml"))
 
   vars = {
     harbor_lb_security_group   = "harbor_lb_security_groups"
