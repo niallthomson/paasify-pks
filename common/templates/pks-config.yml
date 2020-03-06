@@ -1,0 +1,27 @@
+product-name: pivotal-container-service
+product-properties:
+  .properties.pks_api_hostname:
+    value: ${api_domain}
+  .pivotal-container-service.pks_tls:
+    value:
+      cert_pem: ${tls_cert}
+      private_key_pem: ${tls_private_key}
+  .properties.telemetry_selector:
+    value: disabled
+  .properties.telemetry_installation_purpose_selector:
+    value: not_provided
+  .properties.plan1_selector.active.master_az_placement:
+    value: [${plan_azs}]
+  .properties.plan1_selector.active.worker_az_placement:
+    value: [${plan_azs}]
+network-properties:
+  network:
+    name: pks
+  service_network:
+    name: services
+  other_availability_zones: ${az_configuration}
+  singleton_availability_zone:
+    name: ${az}
+resource-config:
+  pivotal-container-service:
+    elb_names: [${api_elb_names}]

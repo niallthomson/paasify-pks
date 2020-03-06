@@ -1,0 +1,8 @@
+- type: replace
+  path: /product-properties/.properties.cloud_provider?
+  value:
+    value: AWS
+
+- type: replace
+  path: /resource-config/harbor?/additional_vm_extensions?
+  value: [${harbor_lb_security_group}]
