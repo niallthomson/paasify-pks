@@ -17,8 +17,10 @@
       cloud_properties:
         security_groups:
         - ${pks_api_lb_security_group}
+        - ${vms_security_group}
     - name: harbor_lb_security_groups
       cloud_properties:
         security_groups:
         - ${harbor_lb_security_group}
+        - ${vms_security_group}
 

@@ -13,6 +13,21 @@ output "ops_manager_password" {
   value       = module.pave.ops_manager_password
 }
 
+output "pks_api_endpoint" {
+  description = "API endpoint for PKS"
+  value       = "https://${aws_route53_record.pks_api_dns.name}:9021"
+}
+
+output "pks_admin_username" {
+  description = "Admin username for PKS"
+  value       = module.common.pks_admin_username
+}
+
+output "pks_admin_password" {
+  description = "Admin username for PKS"
+  value       = module.common.pks_admin_password
+}
+
 output "provisioner_host" {
   description = "Hostname for accessing provisioner instance"
   value       = module.pave.provisioner_host

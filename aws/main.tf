@@ -43,7 +43,6 @@ module "common" {
   tiles              = var.tiles
   iaas               = "light*aws"
   availability_zones = module.pave.availability_zones
-  auto_apply         = var.auto_apply
 
   api_domain    = aws_route53_record.pks_api_dns.name
   harbor_domain = aws_route53_record.harbor_dns.name

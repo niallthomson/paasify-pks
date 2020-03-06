@@ -50,9 +50,3 @@ variable "encrypt_pas_buckets" {
   description = "Apply KMS encryption to S3 buckets used for PAS"
   default     = "1"
 }
-
-variable "auto_apply" {
-  description = "Enable or disable automatically running Apply Changes"
-  default     = true
-  type        = bool
-}
