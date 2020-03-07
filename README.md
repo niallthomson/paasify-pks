@@ -48,8 +48,8 @@ Quick reference for various areas of the project.
 ### Prerequisites
 
 The following are pre-requisites for working with Paasify:
-- Understand how to provide cloud credentials, which is documented [here](https://github.com/niallthomson/paasify-core/docs/handling-cloud-credentials.md).
-- DNS setup appropriately for your cloud of choice. See [here](https://github.com/niallthomson/paasify-core/docs/dns-setup.md) for details on how your DNS should be setup.
+- Understand how to provide cloud credentials, which is documented [here](https://github.com/niallthomson/paasify-core/blob/master/docs/handling-cloud-credentials.md).
+- DNS setup appropriately for your cloud of choice. See [here](https://github.com/niallthomson/paasify-core/blob/master/docs/dns-setup.md) for details on how your DNS should be setup.
 - Terraform 0.12.X installed
 
 ### Tiles
