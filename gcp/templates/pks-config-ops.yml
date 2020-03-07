@@ -1,0 +1,26 @@
+- type: replace
+  path: /product-properties/.properties.cloud_provider?
+  value:
+    value: GCP
+
+- type: replace
+  path: /product-properties/.properties.cloud_provider.gcp.project_id?
+  value:
+    value: ${project}
+
+- type: replace
+  path: /product-properties/.properties.cloud_provider.gcp.network?
+  value:
+    value: ${network_name}
+
+- type: replace
+  path: /product-properties/.properties.cloud_provider.gcp.master_service_account?
+  value:
+    value: ${pks_master_service_account_email}
+
+- type: replace
+  path: /product-properties/.properties.cloud_provider.gcp.worker_service_account?
+  value:
+    value: ${pks_worker_service_account_email}
+
+  

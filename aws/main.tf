@@ -23,7 +23,7 @@ module "pave" {
   region                  = var.region
   availability_zones      = var.availability_zones
   dns_suffix              = var.dns_suffix
-  additional_cert_domains = ["*.pks"]
+  additional_cert_domains = ["*.pks", "harbor"]
   ops_manager_version     = module.common.ops_manager_version
   ops_manager_build       = module.common.ops_manager_build
   pivnet_token            = var.pivnet_token

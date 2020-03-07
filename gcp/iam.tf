@@ -1,0 +1,65 @@
+resource "google_service_account" "pks_master_service_account" {
+  account_id   = "${var.env_name}-pks-master"
+  display_name = "${var.env_name} PKS Service Account"
+}
+
+resource "google_service_account_key" "pks_master_service_account_key" {
+  service_account_id = google_service_account.pks_master_service_account.id
+}
+
+resource "google_service_account" "pks_worker_service_account" {
+  account_id   = "${var.env_name}-pks-worker"
+  display_name = "${var.env_name} PKS Service Account"
+}
+
+resource "google_service_account_key" "pks_worker_service_account_key" {
+  service_account_id = google_service_account.pks_worker_service_account.id
+}
+
+resource "google_project_iam_member" "pks_master_compute_instance_admin_v1" {
+  project = var.project
+  role    = "roles/compute.instanceAdmin.v1"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_master_compute_network_admin" {
+  project = var.project
+  role    = "roles/compute.networkAdmin"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_master_compute_storage_admin" {
+  project = var.project
+  role    = "roles/compute.storageAdmin"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_master_compute_security_admin" {
+  project = var.project
+  role    = "roles/compute.securityAdmin"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_master_iam_service_account_user" {
+  project = var.project
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_master_compute_viewer" {
+  project = var.project
+  role    = "roles/compute.viewer"
+  member  = "serviceAccount:${google_service_account.pks_master_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_worker_compute_viewer" {
+  project = var.project
+  role    = "roles/compute.viewer"
+  member  = "serviceAccount:${google_service_account.pks_worker_service_account.email}"
+}
+
+resource "google_project_iam_member" "pks_worker_storage_object_viewer" {
+  project = var.project
+  role    = "roles/storage.objectViewer"
+  member  = "serviceAccount:${google_service_account.pks_worker_service_account.email}"
+}
