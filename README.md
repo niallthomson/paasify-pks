@@ -2,7 +2,7 @@
 
 ![](https://github.com/niallthomson/paasify-pks/workflows/CI/badge.svg)
 
-Install Pivotal Container Service with nothing more than Terraform. If you need fire-and-forget mechanism that gives you predictable, disposable PKS environments (including popular tiles) then this is for you.
+Install Pivotal Container Service with nothing more than Terraform. If you need fire-and-forget mechanism that gives you predictable, disposable PKS environments (including popular tiles) in your own cloud accounts then this is for you.
 
 The goal of this project is to allow you to complete an install of PKS, including optional tiles, with the only requirement being Terraform. This is being essentially being exposed as 'PKS-as-a-Terraform-module' that is compatible across all supported public clouds. It is designed for short-term, non-production setups, and is not intended to provide a PAS setup that can be upgraded over long periods of time.
 
@@ -44,6 +44,13 @@ When the Terraform run completes there will be a fully working PKS installation,
 ## Reference
 
 Quick reference for various areas of the project.
+
+### Prerequisites
+
+The following are pre-requisites for working with Paasify:
+- Understand how to provide cloud credentials, which is documented [here](https://github.com/niallthomson/paasify-core/docs/handling-cloud-credentials.md).
+- DNS setup appropriately for your cloud of choice. See [here](https://github.com/niallthomson/paasify-core/docs/dns-setup.md) for details on how your DNS should be setup.
+- Terraform 0.12.X installed
 
 ### Tiles
 
