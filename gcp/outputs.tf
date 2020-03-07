@@ -15,7 +15,7 @@ output "ops_manager_password" {
 
 output "pks_api_endpoint" {
   description = "API endpoint for PKS"
-  value       = "https://${google_dns_record_set.pks_api_dns.name}:9021"
+  value       = "https://${local.api_domain}:9021"
 }
 
 output "pks_admin_username" {
@@ -26,6 +26,16 @@ output "pks_admin_username" {
 output "pks_admin_password" {
   description = "Admin username for PKS"
   value       = module.common.pks_admin_password
+}
+
+output "harbor_endpoint" {
+  description = "Harbor endpoint"
+  value       = "https://${local.harbor_domain}"
+}
+
+output "harbor_admin_password" {
+  description = "Harbor admin password"
+  value       = module.common.harbor_admin_password
 }
 
 output "provisioner_host" {

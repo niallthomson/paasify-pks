@@ -28,6 +28,16 @@ output "pks_admin_password" {
   value       = module.common.pks_admin_password
 }
 
+output "harbor_endpoint" {
+  description = "Harbor endpoint"
+  value       = "https://${aws_route53_record.harbor_dns.name}"
+}
+
+output "harbor_admin_password" {
+  description = "Harbor admin password"
+  value       = module.common.harbor_admin_password
+}
+
 output "provisioner_host" {
   description = "Hostname for accessing provisioner instance"
   value       = module.pave.provisioner_host

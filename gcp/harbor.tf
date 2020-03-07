@@ -31,3 +31,21 @@ resource "google_dns_record_set" "harbor_dns" {
 
   rrdatas = [google_compute_address.harbor_lb.address]
 }
+
+resource "google_compute_firewall" "harbor_lb" {
+  name    = "${var.env_name}-harbor-lb-firewall"
+  network = module.pave.network_name
+
+  direction = "INGRESS"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "443"]
+  }
+
+  target_tags = ["${var.env_name}-harbor-lb"]
+}
+
+data "template_file" "harbor_ops_file" {
+  template = chomp(file("${path.module}/templates/harbor-config-ops.yml"))
+}

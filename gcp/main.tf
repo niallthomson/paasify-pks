@@ -40,6 +40,11 @@ resource "null_resource" "pave_blocker" {
   depends_on = [module.pave]
 }
 
+locals {
+  api_domain = replace(replace(google_dns_record_set.pks_api_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
+  harbor_domain = replace(replace(google_dns_record_set.harbor_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
+}
+
 module "common" {
   source = "../common"
 
@@ -48,14 +53,14 @@ module "common" {
   iaas               = "google"
   availability_zones = module.pave.availability_zones
 
-  api_domain    = replace(replace(google_dns_record_set.pks_api_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
-  harbor_domain = replace(replace(google_dns_record_set.harbor_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
+  api_domain    = local.api_domain
+  harbor_domain = local.harbor_domain
 
   api_elb_names    = formatlist("tcp:%s", [google_compute_target_pool.pks_api_lb.name])
-  harbor_elb_names = []
+  harbor_elb_names = formatlist("tcp:%s", [google_compute_target_pool.harbor_lb.name])
 
   pks_ops_file    = data.template_file.pks_ops_file.rendered
-  //harbor_ops_file = data.template_file.harbor_ops_file.rendered
+  harbor_ops_file = data.template_file.harbor_ops_file.rendered
 
   az_configuration = module.pave.az_configuration
   singleton_az     = var.availability_zones[0]

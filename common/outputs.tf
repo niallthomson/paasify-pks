@@ -15,3 +15,8 @@ output "pks_admin_password" {
   description = "Admin username for PKS"
   value       = random_string.pks_password.result
 }
+
+output "harbor_admin_password" {
+  description = "Harbor admin password"
+  value       = random_string.harbor_password.result
+}

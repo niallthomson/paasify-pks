@@ -23,4 +23,6 @@
   value:
     value: ${pks_worker_service_account_email}
 
-  
+- type: replace
+  path: /resource-config/pivotal-container-service?/internet_connected?
+  value: false
