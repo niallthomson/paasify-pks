@@ -26,9 +26,9 @@ module "pks" {
   tile_version = local.tile_versions["pks"]
   //om_product   = "cf"
   //glob         = "srt"
-  iaas         = var.iaas
-  config       = data.template_file.pks_configuration.rendered
-  ops_file     = var.pks_ops_file
+  iaas     = var.iaas
+  config   = data.template_file.pks_configuration.rendered
+  ops_file = var.pks_ops_file
 
   provisioner_host        = var.provisioner_host
   provisioner_username    = var.provisioner_ssh_username

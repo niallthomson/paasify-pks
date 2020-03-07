@@ -10,8 +10,8 @@ variable "ops_manager_versions" {
 variable "tile_versions" {
   default = {
     1.6 = {
-      pks         = "1.6.1"
-      harbor      = "1.10.1"
+      pks    = "1.6.1"
+      harbor = "1.10.1"
     }
   }
 }

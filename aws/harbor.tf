@@ -101,6 +101,6 @@ data "template_file" "harbor_ops_file" {
   template = chomp(file("${path.module}/templates/harbor-config-ops.yml"))
 
   vars = {
-    harbor_lb_security_group   = "harbor_lb_security_groups"
+    harbor_lb_security_group = "harbor_lb_security_groups"
   }
 }

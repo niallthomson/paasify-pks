@@ -41,7 +41,7 @@ resource "null_resource" "pave_blocker" {
 }
 
 locals {
-  api_domain = replace(replace(google_dns_record_set.pks_api_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
+  api_domain    = replace(replace(google_dns_record_set.pks_api_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
   harbor_domain = replace(replace(google_dns_record_set.harbor_dns.name, "/^\\*\\./", ""), "/\\.$/", "")
 }
 

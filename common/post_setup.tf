@@ -22,5 +22,5 @@ module "setup_pks" {
   provisioner_ssh_username    = var.provisioner_ssh_username
   provisioner_ssh_private_key = var.provisioner_ssh_private_key
 
-  blocker       = module.apply_changes.blocker
+  blocker = module.apply_changes.blocker
 }
