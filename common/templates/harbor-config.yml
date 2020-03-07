@@ -6,6 +6,8 @@ product-properties:
     value:
       cert_pem: ${tls_cert}
       private_key_pem: ${tls_private_key}
+  .properties.server_cert_ca:
+    value: ${tls_ca_cert}
   .properties.admin_password:
     value:
       secret: ${admin_password}
