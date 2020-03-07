@@ -1,0 +1,3 @@
+[submodule "bin/core"]
+	path = bin/core
+	url = https://github.com/niallthomson/paasify-bin.git
