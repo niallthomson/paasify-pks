@@ -80,6 +80,14 @@ Default: `"10.0.0.0/16"`
 
 The following outputs are exported:
 
+### harbor\_admin\_password
+
+Description: Harbor admin password
+
+### harbor\_endpoint
+
+Description: Harbor endpoint
+
 ### ops\_manager\_domain
 
 Description: Domain for accessing OpsManager
