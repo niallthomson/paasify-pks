@@ -1,0 +1,30 @@
+name: Update Docs
+on:
+  push:
+    branches:
+      - master
+jobs:
+  updateDocs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get terraform-docs
+        run: |
+          wget https://github.com/segmentio/terraform-docs/releases/download/v0.8.2/terraform-docs-v0.8.2-linux-amd64
+          mkdir -p $GITHUB_WORKSPACE/path
+          mv terraform-docs-v0.8.2-linux-amd64 $GITHUB_WORKSPACE/path/terraform-docs
+          chmod +x $GITHUB_WORKSPACE/path/terraform-docs
+          echo "::add-path::$GITHUB_WORKSPACE/path"
+      - name: Update Docs
+        run: |
+          bin/generate-docs.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update docs
+          title: Update Docs
+          body: Update generated docs
+          branch: update-docs
