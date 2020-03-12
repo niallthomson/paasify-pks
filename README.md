@@ -29,6 +29,30 @@ module "pks" {
 
   tiles = ["harbor"]
 }
+
+output "opsman_url" {
+  value = "https://${module.paasify.ops_manager_domain}"
+}
+
+output "opsman_username" {
+  value = module.paasify.ops_manager_username
+}
+
+output "opsman_password" {
+  value = module.paasify.ops_manager_password
+}
+
+output "pks_api_endpoint" {
+  value = module.paasify.pks_api_endpoint
+}
+
+output "pks_admin_username" {
+  value = module.paasify.pks_admin_username
+}
+
+output "pks_admin_password" {
+  value = module.paasify.pks_admin_password
+}
 ```
 
 This will:
