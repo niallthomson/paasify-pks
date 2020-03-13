@@ -41,7 +41,7 @@ SSH into the jumpbox
 #!/bin/sh
 
 # Connect to the jumbpbox
-GCP_PROJECT_ID=fe-cphillipson
+GCP_PROJECT_ID={project_id}
 
 gcloud compute ssh ubuntu@jbox-cc \
   --project "${GCP_PROJECT_ID}" \
