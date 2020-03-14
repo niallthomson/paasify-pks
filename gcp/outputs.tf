@@ -13,6 +13,11 @@ output "ops_manager_password" {
   value       = module.pave.ops_manager_password
 }
 
+output "ops_manager_ssh_private_key" {
+  description = "SSH private key for accessing OpsManager"
+  value       = module.pave.ops_manager_ssh_private_key
+}
+
 output "pks_api_endpoint" {
   description = "API endpoint for PKS"
   value       = "https://${local.api_domain}:9021"

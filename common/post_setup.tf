@@ -9,6 +9,7 @@ data "template_file" "setup_pks" {
   vars = {
     api_endpoint = var.api_domain
     pks_password = random_string.pks_password.result
+    pks_version  = local.tile_versions["pks"]
   }
 }
 

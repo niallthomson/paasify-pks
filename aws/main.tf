@@ -19,15 +19,16 @@ resource "null_resource" "infra_blocker" {
 module "pave" {
   source = "github.com/niallthomson/paasify-core//pave/aws"
 
-  environment_name        = var.env_name
-  region                  = var.region
-  availability_zones      = var.availability_zones
-  dns_suffix              = var.dns_suffix
-  additional_cert_domains = ["*.pks", "harbor"]
-  ops_manager_version     = module.common.ops_manager_version
-  ops_manager_build       = module.common.ops_manager_build
-  pivnet_token            = var.pivnet_token
-  director_ops_file       = data.template_file.director_ops_file.rendered
+  environment_name         = var.env_name
+  region                   = var.region
+  availability_zones       = var.availability_zones
+  dns_suffix               = var.dns_suffix
+  additional_cert_domains  = ["*.pks", "harbor"]
+  ops_manager_version      = module.common.ops_manager_version
+  ops_manager_build        = module.common.ops_manager_build
+  pivnet_token             = var.pivnet_token
+  director_ops_file        = data.template_file.director_ops_file.rendered
+  additional_iam_roles_arn = [aws_iam_role.pks_master.arn, aws_iam_role.pks_worker.arn]
 
   blockers = [null_resource.infra_blocker.id]
 }
