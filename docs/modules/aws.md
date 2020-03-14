@@ -96,6 +96,10 @@ Description: Domain for accessing OpsManager
 
 Description: Password for accessing OpsManager
 
+### ops\_manager\_ssh\_private\_key
+
+Description: SSH private key for accessing OpsManager
+
 ### ops\_manager\_username
 
 Description: Username for accessing OpsManager
