@@ -2,9 +2,9 @@
 resource "aws_elb" "clusters" {
   count = length(var.clusters)
 
-  name               = "${var.env_name}-pks-cluster-${var.clusters[count.index]}"
-  subnets            = module.pave.public_subnet_ids
-  security_groups    = [aws_security_group.pks_master_security_group.id]
+  name            = "${var.env_name}-pks-cluster-${var.clusters[count.index]}"
+  subnets         = module.pave.public_subnet_ids
+  security_groups = [aws_security_group.pks_master_security_group.id]
 
   listener {
     instance_port     = 8443
