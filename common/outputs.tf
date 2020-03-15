@@ -20,3 +20,7 @@ output "harbor_admin_password" {
   description = "Harbor admin password"
   value       = random_string.harbor_password.result
 }
+
+output "blocker" {
+  value = module.setup_pks.blocker
+}

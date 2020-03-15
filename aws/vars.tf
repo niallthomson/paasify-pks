@@ -50,3 +50,9 @@ variable "encrypt_pas_buckets" {
   description = "Apply KMS encryption to S3 buckets used for PAS"
   default     = "1"
 }
+
+variable "clusters" {
+  description = "List of names of clusters to build automatically"
+  type        = list(string)
+  default     = []
+}
