@@ -44,6 +44,14 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
+### clusters
+
+Description: List of names of clusters to build automatically
+
+Type: `list(string)`
+
+Default: `[]`
+
 ### encrypt\_pas\_buckets
 
 Description: Apply KMS encryption to S3 buckets used for PAS
