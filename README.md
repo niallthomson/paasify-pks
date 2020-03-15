@@ -26,6 +26,8 @@ module "pks" {
 
   region             = "us-west-2"
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  
+  clusters = ["test1"]
 
   tiles = ["harbor"]
 }
@@ -58,8 +60,9 @@ output "pks_admin_password" {
 This will:
 - Install PKS 1.6
 - Download, stage and configure the Harbor tile
-- Wire up DNS so that its accessible at `paasify-test.aws.paasify.org`
+- Wire up DNS so that the various components are accessible under `paasify-test.aws.paasify.org`
 - Provision valid SSL certificates via Lets Encrypt for every common HTTPS endpoint
+- Create a PKS cluster called `test1`, along with a load balancer for its master nodes and a corresponding DNS entry
 - Allow you to cleanly tear down all infrastructure via `terraform destroy`
 - Perform all PivNet product downloads/uploads on a jumpbox VM for speed
 
