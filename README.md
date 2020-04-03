@@ -22,7 +22,7 @@ module "pks" {
   dns_suffix   = "aws.paasify.org"
   pivnet_token = "<pivnet token here>"
 
-  pks_version  = 1.6
+  pks_version  = 1.7
 
   region             = "us-west-2"
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -80,8 +80,8 @@ The following are pre-requisites for working with Paasify:
 
 The following table lists all tiles that can be automatically installed, along with the name that should be put in the `tiles` parameter:
 
-| Tile | Name| 1.6 |
-|------|-----|-----|
-| Harbor | `harbor` | :white_check_mark: |
+| Tile | Name| 1.6 | 1.7 |
+|------|-----|-----|-----|
+| Harbor | `harbor` | :white_check_mark: | :white_check_mark: |
 
 The latest stemcell supported by each tile will automatically be uploaded to OpsManager.
